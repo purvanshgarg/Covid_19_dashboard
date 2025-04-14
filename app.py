@@ -1,207 +1,3 @@
-import keplergl
-# from keplergl import KeplerGl
-# map_1 = KeplerGl()
-# map_1
-
-import os 
-os.chdir(r'D:\Covid 19') 
-
-
-os.getcwd()
-
-# import pandas as pd
-# import pydeck as pdk
-
-# # Load datasets
-# cases_df = pd.read_csv("covid cases by state_Full Data_data (1).csv")
-# testing_df = pd.read_csv("Statewise Testing Details_Full Data_data.csv")
-# vaccine_df = pd.read_csv("COVID-19 India Statewise Vaccine Data.csv")
-
-# # Convert date columns to datetime format
-# casimport pandas as pd
-# import numpy as np
-# import pydeck as pdk
-# import plotly.express as px
-# import plotly.graph_objects as go
-# from plotly.subplots import make_subplots
-# import matplotlib.pyplot as plt
-# import seaborn as sns
-
-# # Load the merged dataset that contains both COVID cases and vaccination data
-# merged_data = pd.read_csv('merged_covid_vaccine_data.csv')
-
-# # Convert date column to datetime
-# merged_data['Date'] = pd.to_datetime(merged_data['Date'])
-
-# # Filter for second wave period (March 2021 to July 2021)
-# start_date = '2021-03-01'
-# end_date = '2021-07-31'
-# wave2_data = merged_data[(merged_data['Date'] >= start_date) & (merged_data['Date'] <= end_date)]
-
-# # Calculate rolling averages for smoother trends
-# def prepare_state_trends(state_data):
-#     # Sort by date
-#     state_data = state_data.sort_values('Date')
-    
-#     # Calculate 7-day rolling averages
-#     state_data['Cases_7day_avg'] = state_data['New Cases'].rolling(7).mean()
-    
-#     # Calculate daily vaccination rate (first difference of cumulative doses)
-#     state_data['Daily_Doses'] = state_data['Total Doses Administered'].diff()
-#     state_data['Doses_7day_avg'] = state_data['Daily_Doses'].rolling(7).mean()
-    
-#     return state_data
-
-# # Function to create visualization for a specific state
-# def create_state_vaccination_impact(state_name):
-#     state_data = wave2_data[wave2_data['State'] == state_name].copy()
-    
-#     if len(state_data) < 10:  # Skip if insufficient data
-#         return None
-    
-#     state_data = prepare_state_trends(state_data)
-    
-#     # Create a dual-axis plot
-#     fig = make_subplots(specs=[[{"secondary_y": True}]])
-    
-#     # Add new cases trend
-#     fig.add_trace(
-#         go.Scatter(
-#             x=state_data['Date'], 
-#             y=state_data['Cases_7day_avg'],
-#             name="New Cases (7-day avg)",
-#             line=dict(color='red', width=2)
-#         ),
-#         secondary_y=False
-#     )
-    
-#     # Add vaccination trend
-#     fig.add_trace(
-#         go.Scatter(
-#             x=state_data['Date'], 
-#             y=state_data['Doses_7day_avg'],
-#             name="Daily Vaccinations (7-day avg)",
-#             line=dict(color='blue', width=2)
-#         ),
-#         secondary_y=True
-#     )
-    
-#     # Add titles and labels
-#     fig.update_layout(
-#         title_text=f"COVID-19 Cases vs. Vaccination Rate: {state_name}",
-#         xaxis_title="Date",
-#         legend=dict(y=0.99, x=0.01, orientation='h'),
-#         template='plotly_white',
-#         height=600
-#     )
-    
-#     fig.update_yaxes(title_text="New Cases (7-day avg)", secondary_y=False)
-#     fig.update_yaxes(title_text="Daily Vaccinations (7-day avg)", secondary_y=True)
-    
-#     return fig
-
-# # Function to analyze vaccination impact across all states
-# def analyze_vaccination_impact():
-#     # Get list of top 10 states by total cases
-#     case_totals = wave2_data.groupby('State')['Confirmed'].max().nlargest(10)
-#     top_states = case_totals.index.tolist()
-    
-#     # Calculate metrics to measure vaccination impact
-#     impact_metrics = []
-    
-#     for state in top_states:
-#         state_data = wave2_data[wave2_data['State'] == state].copy()
-        
-#         if len(state_data) < 30:  # Skip if insufficient data
-#             continue
-            
-#         state_data = state_data.sort_values('Date')
-        
-#         # Get vaccination and case data
-#         first_record = state_data.iloc[0]
-#         peak_record = state_data.loc[state_data['New Cases'].idxmax()]
-#         last_record = state_data.iloc[-1]
-        
-#         # Calculate metrics
-#         pre_vax_cases = first_record['Confirmed']
-#         peak_cases = peak_record['Confirmed']
-#         end_cases = last_record['Confirmed']
-        
-#         start_vax = first_record['Total Doses Administered'] if not pd.isna(first_record['Total Doses Administered']) else 0
-#         peak_vax = peak_record['Total Doses Administered'] if not pd.isna(peak_record['Total Doses Administered']) else 0
-#         end_vax = last_record['Total Doses Administered'] if not pd.isna(last_record['Total Doses Administered']) else 0
-        
-#         # Calculate the case decline rate after peak
-#         days_after_peak = (last_record['Date'] - peak_record['Date']).days
-#         if days_after_peak > 0:
-#             case_decline_rate = (peak_cases - end_cases) / days_after_peak
-#         else:
-#             case_decline_rate = 0
-            
-#         # Calculate vaccination rate
-#         total_days = (last_record['Date'] - first_record['Date']).days
-#         if total_days > 0:
-#             vax_rate = (end_vax - start_vax) / total_days
-#         else:
-#             vax_rate = 0
-        
-#         impact_metrics.append({
-#             'State': state,
-#             'Case_Growth_to_Peak': peak_cases - pre_vax_cases,
-#             'Case_Decline_After_Peak': end_cases - peak_cases,
-#             'Daily_Case_Decline_Rate': case_decline_rate,
-#             'Daily_Vaccination_Rate': vax_rate,
-#             'Total_Vaccinations': end_vax,
-#             'Peak_Date': peak_record['Date'],
-#             'Peak_Cases': peak_record['New Cases']
-#         })
-    
-#     impact_df = pd.DataFrame(impact_metrics)
-    
-#     # Create visualization of relationship between vaccination rate and case decline
-#     fig = px.scatter(
-#         impact_df, 
-#         x='Daily_Vaccination_Rate', 
-#         y='Daily_Case_Decline_Rate',
-#         size='Total_Vaccinations',
-#         color='Peak_Cases',
-#         hover_name='State',
-#         text='State',
-#         color_continuous_scale='Viridis',
-#         title='Relationship Between Vaccination Rate and COVID-19 Case Decline Rate',
-#         labels={
-#             'Daily_Vaccination_Rate': 'Daily Vaccination Rate (doses/day)',
-#             'Daily_Case_Decline_Rate': 'Daily Case Decline Rate (cases/day)',
-#             'Total_Vaccinations': 'Total Vaccinations',
-#             'Peak_Cases': 'Peak Daily Cases'
-#         },
-#         size_max=50
-#     )
-    
-#     fig.update_traces(textposition='top center')
-#     fig.update_layout(height=700, template='plotly_white')
-    
-#     return fig, impact_df
-
-# # Function to create vaccination distribution analysis
-# def analyze_vaccination_distribution():
-#     # Filter the last available record for each state to get final vaccination numbers
-#     latest_recordsltip={"html": "<b>Cases:</b> {Confirmed}"}
-# )
-
-# r.show()
-
-
-# df = pd.read_csv("Statewise Testing Details_Full Data_data.csv")
-# df.info()
-
-
-# !pip install plotly
-
-# !pip install dash
-
-# !pip install dash_bootstrap_components
-
 import pandas as pd
 import numpy as np
 import pydeck as pdk
@@ -214,12 +10,12 @@ import geopandas as gpd
 from shapely.geometry import Point
 
 # Load datasets
-covid_state_data = pd.read_csv('covid cases by state_Full Data_data (1).csv')
-covid_india = pd.read_csv('covid_19_india.csv')
-vaccine_data = pd.read_csv('COVID-19 India Statewise Vaccine Data.csv')
-covid2_new = pd.read_csv('Covid2_new.csv')
-testing_data = pd.read_csv('Statewise Testing Details_Full Data_data.csv')
-merged_data = pd.read_csv('merged_covid_vaccine_data.csv')
+covid_state_data = pd.read_csv(r"Data/covid cases by state_Full Data_data (1).csv")
+covid_india = pd.read_csv(r"Data/covid_19_india.csv")
+vaccine_data = pd.read_csv(r"Data/COVID-19 India Statewise Vaccine Data.csv")
+covid2_new = pd.read_csv(r"Data/Covid2_new.csv")
+testing_data = pd.read_csv(r"Data/Statewise Testing Details_Full Data_data.csv")
+merged_data = pd.read_csv(r"Data/merged_covid_vaccine_data.csv")
 
 # Fix date columns
 covid_state_data['Date'] = pd.to_datetime(covid_state_data['Date'])
@@ -711,7 +507,6 @@ detailed_analysis = generate_detailed_analysis()
 animation_frames = create_time_animation(covid2_new_wave2)
 
 
-
 import pandas as pd
 import numpy as np
 import pydeck as pdk
@@ -722,7 +517,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load the merged dataset that contains both COVID cases and vaccination data
-merged_data = pd.read_csv('merged_covid_vaccine_data.csv')
+merged_data = pd.read_csv('Data/merged_covid_vaccine_data.csv')
 
 # Convert date column to datetime
 merged_data['Date'] = pd.to_datetime(merged_data['Date'])
@@ -882,6 +677,7 @@ def analyze_vaccination_distribution():
     # Filter the last available record for each state to get final vaccination numbers
     latest_records
 
+
 import pandas as pd
 import numpy as np
 import pydeck as pdk
@@ -897,14 +693,13 @@ import base64
 
 # Load datasets
 def load_datasets():
-    covid_state_data = pd.read_csv('covid cases by state_Full Data_data (1).csv')
-    covid_india = pd.read_csv('covid_19_india.csv')
-    vaccine_data = pd.read_csv('COVID-19 India Statewise Vaccine Data.csv')
-    covid2_new = pd.read_csv('Covid2_new.csv')
-    testing_data = pd.read_csv('Statewise Testing Details_Full Data_data.csv')
-    merged_data = pd.read_csv('merged_covid_vaccine_data.csv')
-    age_group_data = pd.read_csv('AgeGroupDetails.csv')
-    # gender_data = pd.read_csv('Gender without missing values_Full Data_data.csv')
+    covid_state_data = pd.read_csv(r"Data/covid cases by state_Full Data_data (1).csv")
+    covid_india = pd.read_csv(r"Data/covid_19_india.csv")
+    vaccine_data = pd.read_csv(r"Data/covid_vaccine_statewise.csv")
+    covid2_new = pd.read_csv(r"Data/Covid2_new.csv")
+    testing_data = pd.read_csv(r"Data/StatewiseTestingDetails.csv")
+    merged_data = pd.read_csv(r"Data/merged_covid_vaccine_data.csv")
+    age_group_data = pd.read_csv(r"Data/AgeGroupDetails.csv")
     
     # Fix date columns
     covid_state_data['Date'] = pd.to_datetime(covid_state_data['Date'])
@@ -912,7 +707,6 @@ def load_datasets():
     covid2_new['Date'] = pd.to_datetime(covid2_new['Date'])
     testing_data['Date'] = pd.to_datetime(testing_data['Date'])
     merged_data['Date'] = pd.to_datetime(merged_data['Date'])
-    # gender_data['Diagnosed Date'] = pd.to_datetime(gender_data['Diagnosed Date'])
     
     return {
         'covid_state': covid_state_data,
@@ -922,7 +716,6 @@ def load_datasets():
         'testing': testing_data,
         'merged': merged_data,
         'age_group': age_group_data,
-        # 'gender': gender_data
     }
 
 # Filter for second wave period (March 2021 to July 2021)
@@ -935,8 +728,6 @@ def filter_wave2_data(datasets):
     for key, df in datasets.items():
         if 'Date' in df.columns:
             wave2_datasets[key] = df[(df['Date'] >= start_date) & (df['Date'] <= end_date)]
-        # elif key == 'gender':
-        #     wave2_datasets[key] = df[(df['Diagnosed Date'] >= start_date) & (df['Diagnosed Date'] <= end_date)]
         else:
             wave2_datasets[key] = df
     
@@ -1069,8 +860,6 @@ def create_vaccination_data(merged_wave2):
         'Total Doses Administered': 'max',
         'First Dose Administered': 'max',
         'Second Dose Administered': 'max',
-        # 'Male (Doses Administered)': 'max',
-        # 'Female (Doses Administered)': 'max'
     }).reset_index()
     
     # Get the last record for each state to show final vaccination status
@@ -1130,36 +919,6 @@ def create_vaccination_map(vax_data):
     )
     
     return deck
-
-# # Create CFR (Case Fatality Rate) Choropleth
-# def create_cfr_choropleth(peak_df):
-#     fig = px.choropleth(
-#         peak_df,
-#         locations="State",
-#         locationmode="country names",
-#         color="CFR",
-#         hover_name="State",
-#         hover_data=["Total_Wave2_Cases", "Total_Wave2_Deaths"],
-#         title="COVID-19 Case Fatality Rate by State (Second Wave)",
-#         color_continuous_scale="Reds",
-#         labels={"CFR": "Case Fatality Rate (%)"}
-#     )
-    
-#     fig.update_geos(
-#         visible=False,
-#         projection_type="mercator",
-#         lonaxis_range=[68, 98],
-#         lataxis_range=[6, 38]
-#     )
-    
-#     fig.update_layout(
-#         title_x=0.5,
-#         margin={"r": 0, "t": 30, "l": 0, "b": 0},
-#         coloraxis_colorbar=dict(title="CFR (%)"),
-#         height=600
-#     )
-    
-#     return fig
 
 # Create time series visualization for top states
 def create_time_series_chart(covid2_wave2):
@@ -1240,7 +999,7 @@ def create_vaccination_progress_chart(merged_wave2):
 # Create testing vs positivity rate chart
 def create_testing_positivity_chart(testing_data):
     # Calculate positivity rate
-    testing_data['Positivity_Rate'] = (testing_data['Positive'] / testing_data['Total Samples']) * 100
+    testing_data['Positivity_Rate'] = (testing_data['Positive'] / testing_data['TotalSamples']) * 100
     
     # Group by state and calculate average positivity rate
     state_positivity = testing_data.groupby('State')['Positivity_Rate'].mean().reset_index()
@@ -1332,28 +1091,6 @@ def create_recovery_vaccination_scatter(merged_wave2):
     )
     
     return fig
-
-# # Create gender distribution pie chart
-# def create_gender_distribution_chart(gender_data):
-#     # Count cases by gender
-#     gender_counts = gender_data['Gender'].value_counts()
-    
-#     # Create pie chart
-#     fig = px.pie(
-#         names=gender_counts.index,
-#         values=gender_counts.values,
-#         title='COVID-19 Cases by Gender (Second Wave)',
-#         color_discrete_sequence=px.colors.qualitative.Set3
-#     )
-    
-#     fig.update_traces(textposition='inside', textinfo='percent+label')
-    
-#     fig.update_layout(
-#         legend_title='Gender',
-#         height=400
-#     )
-    
-#     return fig
 
 # Create age group distribution chart
 def create_age_distribution_chart(age_group_data):
@@ -1476,12 +1213,10 @@ def create_dashboard():
     vaccination_map.to_html("vaccination_map.html")
     
     # Create Plotly visualizations
-    # cfr_choropleth = create_cfr_choropleth(peak_cases_df)
     time_series_chart = create_time_series_chart(wave2_datasets['covid2'])
     vaccination_progress_chart = create_vaccination_progress_chart(wave2_datasets['merged'])
     testing_positivity_chart = create_testing_positivity_chart(wave2_datasets['testing'])
     recovery_vaccination_scatter = create_recovery_vaccination_scatter(wave2_datasets['merged'])
-    # gender_distribution_chart = create_gender_distribution_chart(wave2_datasets['gender'])
     age_distribution_chart = create_age_distribution_chart(wave2_datasets['age_group'])
     state_metrics_table = create_state_metrics_table(wave2_datasets['covid2'])
     
@@ -1509,18 +1244,9 @@ def create_dashboard():
                         )
                     ])
                 ])
-            ], width=6),
-            
-        #     dbc.Col([
-        #         dbc.Card([
-        #             dbc.CardHeader("COVID-19 Case Fatality Rate by State"),
-        #             dbc.CardBody([
-        #                 dcc.Graph(figure=cfr_choropleth)
-        #             ])
-        #         ])
-        #     ], width=6)
-        # ], className='mb-4'),
-        
+            ], width=12)
+        ], className='mb-4'),
+               
         dbc.Row([
             dbc.Col([
                 dbc.Card([
@@ -1579,22 +1305,13 @@ def create_dashboard():
         dbc.Row([
             dbc.Col([
                 dbc.Card([
-                    dbc.CardHeader("Cases by Gender"),
+                    dbc.CardHeader("Cases by Age Group"),
                     dbc.CardBody([
-                        dcc.Graph(figure=gender_distribution_chart)
+                        dcc.Graph(figure=age_distribution_chart)
                     ])
                 ])
-            ], width=6),
-            
-        #     dbc.Col([
-        #         dbc.Card([
-        #             dbc.CardHeader("Cases by Age Group"),
-        #             dbc.CardBody([
-        #                 dcc.Graph(figure=age_distribution_chart)
-        #             ])
-        #         ])
-        #     ], width=6)
-        # ], className='mb-4'),
+            ], width=12)
+        ], className='mb-4'),
         
         dbc.Row([
             dbc.Col([
@@ -1614,3 +1331,5 @@ def create_dashboard():
 if __name__ == '__main__':
     app = create_dashboard()
     app.run(debug=True)
+    
+    print("Dashboard is running. Open http://127.0.0.1:8050/ in your web browser to view it.")
