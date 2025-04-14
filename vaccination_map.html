@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~9.0.*/dist/index.js'></script>
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#deck-container canvas {
+  z-index: 1;
+  background: none;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  </body>
+  <script>
+    const container = document.getElementById('deck-container');
+    const jsonInput = {
+  "initialViewState": {
+    "bearing": 0,
+    "latitude": 22.5937,
+    "longitude": 78.9629,
+    "maxZoom": 10,
+    "minZoom": 3,
+    "pitch": 0,
+    "zoom": 4
+  },
+  "layers": [
+    {
+      "@@type": "ScatterplotLayer",
+      "data": [
+        {
+          "Date": {},
+          "First Dose Administered": 156470.0,
+          "Second Dose Administered": 19823.0,
+          "State": "Andaman and Nicobar Islands",
+          "Total Doses Administered": 176293.0,
+          "latitude": 11.7401,
+          "longitude": 92.6586,
+          "radius": 543.4505169735922
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 12587352.0,
+          "Second Dose Administered": 3116002.0,
+          "State": "Andhra Pradesh",
+          "Total Doses Administered": 15703354.0,
+          "latitude": 15.9129,
+          "longitude": 79.74,
+          "radius": 48408.02442252005
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 508826.0,
+          "Second Dose Administered": 84529.0,
+          "State": "Arunachal Pradesh",
+          "Total Doses Administered": 593355.0,
+          "latitude": 28.218,
+          "longitude": 94.7278,
+          "radius": 1829.1088216711146
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 5792056.0,
+          "Second Dose Administered": 1230866.0,
+          "State": "Assam",
+          "Total Doses Administered": 7022922.0,
+          "latitude": 26.2006,
+          "longitude": 92.9376,
+          "radius": 21649.24637714041
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 13683539.0,
+          "Second Dose Administered": 2215483.0,
+          "State": "Bihar",
+          "Total Doses Administered": 15899022.0,
+          "latitude": 25.0961,
+          "longitude": 85.3131,
+          "radius": 49011.20138221323
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 439301.0,
+          "Second Dose Administered": 87576.0,
+          "State": "Chandigarh",
+          "Total Doses Administered": 526877.0,
+          "latitude": 30.7333,
+          "longitude": 76.7794,
+          "radius": 1624.1800753943457
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 6879610.0,
+          "Second Dose Administered": 1573735.0,
+          "State": "Chhattisgarh",
+          "Total Doses Administered": 8453345.0,
+          "latitude": 21.2787,
+          "longitude": 81.8661,
+          "radius": 26058.74714484484
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 6088879.0,
+          "Second Dose Administered": 1804655.0,
+          "State": "Delhi",
+          "Total Doses Administered": 7893534.0,
+          "latitude": 28.7041,
+          "longitude": 77.1025,
+          "radius": 24333.04290612008
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 817485.0,
+          "Second Dose Administered": 116537.0,
+          "State": "Goa",
+          "Total Doses Administered": 934022.0,
+          "latitude": 15.2993,
+          "longitude": 74.124,
+          "radius": 2879.267689384766
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 20070872.0,
+          "Second Dose Administered": 5621170.0,
+          "State": "Gujarat",
+          "Total Doses Administered": 25692042.0,
+          "latitude": 22.2587,
+          "longitude": 71.1924,
+          "radius": 79199.70450901196
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 7433613.0,
+          "Second Dose Administered": 1423065.0,
+          "State": "Haryana",
+          "Total Doses Administered": 8856678.0,
+          "latitude": 29.0588,
+          "longitude": 76.0856,
+          "radius": 27302.083677563154
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 3351501.0,
+          "Second Dose Administered": 514786.0,
+          "State": "Himachal Pradesh",
+          "Total Doses Administered": 3866287.0,
+          "latitude": 31.1048,
+          "longitude": 77.1734,
+          "radius": 11918.429369959551
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 3844705.0,
+          "Second Dose Administered": 680830.0,
+          "State": "Jammu and Kashmir",
+          "Total Doses Administered": 4525535.0,
+          "latitude": 33.7782,
+          "longitude": 76.5762,
+          "radius": 13950.663584669193
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 5789884.0,
+          "Second Dose Administered": 1064258.0,
+          "State": "Jharkhand",
+          "Total Doses Administered": 6854142.0,
+          "latitude": 23.6102,
+          "longitude": 85.2799,
+          "radius": 21128.95584799403
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 18973039.0,
+          "Second Dose Administered": 3739375.0,
+          "State": "Karnataka",
+          "Total Doses Administered": 22712414.0,
+          "latitude": 15.3173,
+          "longitude": 75.7139,
+          "radius": 70014.53903455188
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 10841514.0,
+          "Second Dose Administered": 3254212.0,
+          "State": "Kerala",
+          "Total Doses Administered": 14095726.0,
+          "latitude": 10.8505,
+          "longitude": 76.2711,
+          "radius": 43452.261756383436
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 170900.0,
+          "Second Dose Administered": 55901.0,
+          "State": "Ladakh",
+          "Total Doses Administered": 226801.0,
+          "latitude": 34.1526,
+          "longitude": 77.577,
+          "radius": 699.149261173885
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 46779.0,
+          "Second Dose Administered": 7921.0,
+          "State": "Lakshadweep",
+          "Total Doses Administered": 54700.0,
+          "latitude": 10.5667,
+          "longitude": 72.6417,
+          "radius": 168.62123441347924
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 17917782.0,
+          "Second Dose Administered": 2396376.0,
+          "State": "Madhya Pradesh",
+          "Total Doses Administered": 20314158.0,
+          "latitude": 22.9734,
+          "longitude": 78.6569,
+          "radius": 62621.54292560246
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 26067743.0,
+          "Second Dose Administered": 6371825.0,
+          "State": "Maharashtra",
+          "Total Doses Administered": 32439568.0,
+          "latitude": 19.7515,
+          "longitude": 75.7139,
+          "radius": 100000.0
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 581109.0,
+          "Second Dose Administered": 74138.0,
+          "State": "Manipur",
+          "Total Doses Administered": 655247.0,
+          "latitude": 24.6637,
+          "longitude": 93.9063,
+          "radius": 2019.9005116221028
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 619732.0,
+          "Second Dose Administered": 79481.0,
+          "State": "Meghalaya",
+          "Total Doses Administered": 699213.0,
+          "latitude": 25.467,
+          "longitude": 91.3662,
+          "radius": 2155.4325261051563
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 518679.0,
+          "Second Dose Administered": 54369.0,
+          "State": "Mizoram",
+          "Total Doses Administered": 573048.0,
+          "latitude": 23.1645,
+          "longitude": 92.9376,
+          "radius": 1766.509344390776
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 440344.0,
+          "Second Dose Administered": 59874.0,
+          "State": "Nagaland",
+          "Total Doses Administered": 500218.0,
+          "latitude": 26.1584,
+          "longitude": 94.5624,
+          "radius": 1541.9995728673082
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 9868098.0,
+          "Second Dose Administered": 2148240.0,
+          "State": "Odisha",
+          "Total Doses Administered": 12016338.0,
+          "latitude": 20.9517,
+          "longitude": 85.0985,
+          "radius": 37042.22571644604
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 440363.0,
+          "Second Dose Administered": 67105.0,
+          "State": "Puducherry",
+          "Total Doses Administered": 507468.0,
+          "latitude": 11.9416,
+          "longitude": 79.8083,
+          "radius": 1564.3488224010875
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 5289807.0,
+          "Second Dose Administered": 1002671.0,
+          "State": "Punjab",
+          "Total Doses Administered": 6292478.0,
+          "latitude": 31.1471,
+          "longitude": 75.3412,
+          "radius": 19397.53944935395
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 20750495.0,
+          "Second Dose Administered": 3980551.0,
+          "State": "Rajasthan",
+          "Total Doses Administered": 24731046.0,
+          "latitude": 27.0238,
+          "longitude": 74.2179,
+          "radius": 76237.2852807411
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 401506.0,
+          "Second Dose Administered": 72304.0,
+          "State": "Sikkim",
+          "Total Doses Administered": 473810.0,
+          "latitude": 27.533,
+          "longitude": 88.5122,
+          "radius": 1460.592816772406
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 13072807.0,
+          "Second Dose Administered": 2569278.0,
+          "State": "Tamil Nadu",
+          "Total Doses Administered": 15642085.0,
+          "latitude": 11.1271,
+          "longitude": 78.6569,
+          "radius": 48219.15322670142
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 9493724.0,
+          "Second Dose Administered": 1577691.0,
+          "State": "Telangana",
+          "Total Doses Administered": 11071415.0,
+          "latitude": 18.1124,
+          "longitude": 79.0193,
+          "radius": 34129.35400372779
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 1955929.0,
+          "Second Dose Administered": 594414.0,
+          "State": "Tripura",
+          "Total Doses Administered": 2550343.0,
+          "latitude": 23.9408,
+          "longitude": 91.9882,
+          "radius": 7861.827876376159
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 26792784.0,
+          "Second Dose Administered": 4488616.0,
+          "State": "Uttar Pradesh",
+          "Total Doses Administered": 31281400.0,
+          "latitude": 26.8467,
+          "longitude": 80.9462,
+          "radius": 96429.76749875337
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 3579832.0,
+          "Second Dose Administered": 821957.0,
+          "State": "Uttarakhand",
+          "Total Doses Administered": 4401789.0,
+          "latitude": 30.0668,
+          "longitude": 79.0193,
+          "radius": 13569.197345661323
+        },
+        {
+          "Date": {},
+          "First Dose Administered": 16833029.0,
+          "Second Dose Administered": 5056593.0,
+          "State": "West Bengal",
+          "Total Doses Administered": 21889622.0,
+          "latitude": 22.9868,
+          "longitude": 87.855,
+          "radius": 67478.15507284191
+        }
+      ],
+      "filled": true,
+      "getFillColor": [
+        0,
+        128,
+        255,
+        140
+      ],
+      "getPosition": "@@=[longitude, latitude]",
+      "getRadius": "@@=radius",
+      "id": "d0ee17c9-0936-4887-9a6a-823b145e6c57",
+      "opacity": 0.8,
+      "pickable": true,
+      "stroked": true
+    }
+  ],
+  "mapProvider": "carto",
+  "mapStyle": "mapbox://styles/mapbox/light-v9",
+  "views": [
+    {
+      "@@type": "MapView",
+      "controller": true
+    }
+  ]
+};
+    const tooltip = {'html': '<b>{State}</b><br>Total Doses: {Total Doses Administered:,.0f}<br>First Doses: {First Dose Administered:,.0f}<br>Second Doses: {Second Dose Administered:,.0f}', 'style': {'backgroundColor': 'royalblue', 'color': 'white'}};
+    const customLibraries = null;
+    const configuration = null;
+
+    const deckInstance = createDeck({
+                  container,
+      jsonInput,
+      tooltip,
+      customLibraries,
+      configuration
+    });
+
+  </script>
+</html>

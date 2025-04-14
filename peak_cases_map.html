@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~9.0.*/dist/index.js'></script>
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#deck-container canvas {
+  z-index: 1;
+  background: none;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  </body>
+  <script>
+    const container = document.getElementById('deck-container');
+    const jsonInput = {
+  "initialViewState": {
+    "bearing": 0,
+    "latitude": 22.5937,
+    "longitude": 78.9629,
+    "maxZoom": 10,
+    "minZoom": 3,
+    "pitch": 0,
+    "zoom": 4
+  },
+  "layers": [
+    {
+      "@@type": "ScatterplotLayer",
+      "data": [
+        {
+          "CFR": 2.6971802206783817,
+          "Peak_Daily_Cases": 97.0,
+          "Peak_Date": {},
+          "State": "Andaman and Nicobar Islands",
+          "Total_Wave2_Cases": 2447.0,
+          "Total_Wave2_Deaths": 66,
+          "latitude": 11.7401,
+          "longitude": 92.6586,
+          "radius": 141.33554807594237
+        },
+        {
+          "CFR": 0.55395537342715,
+          "Peak_Daily_Cases": 24171.0,
+          "Peak_Date": {},
+          "State": "Andhra Pradesh",
+          "Total_Wave2_Cases": 999539.0,
+          "Total_Wave2_Deaths": 5537,
+          "latitude": 15.9129,
+          "longitude": 79.74,
+          "radius": 35218.77868601652
+        },
+        {
+          "CFR": 0.6098843322818086,
+          "Peak_Daily_Cases": 497.0,
+          "Peak_Date": {},
+          "State": "Arunachal Pradesh",
+          "Total_Wave2_Cases": 19020.0,
+          "Total_Wave2_Deaths": 116,
+          "latitude": 28.218,
+          "longitude": 94.7278,
+          "radius": 724.1625504509624
+        },
+        {
+          "CFR": 1.1845425108451295,
+          "Peak_Daily_Cases": 6573.0,
+          "Peak_Date": {},
+          "State": "Assam",
+          "Total_Wave2_Cases": 290914.0,
+          "Total_Wave2_Deaths": 3446,
+          "latitude": 26.2006,
+          "longitude": 92.9376,
+          "radius": 9577.304716527517
+        },
+        {
+          "CFR": 1.7517927194040377,
+          "Peak_Daily_Cases": 15853.0,
+          "Peak_Date": {},
+          "State": "Bihar",
+          "Total_Wave2_Cases": 459358.0,
+          "Total_Wave2_Deaths": 8047,
+          "latitude": 25.0961,
+          "longitude": 85.3131,
+          "radius": 23098.89117162798
+        },
+        {
+          "CFR": 1.142326328738922,
+          "Peak_Daily_Cases": 895.0,
+          "Peak_Date": {},
+          "State": "Chandigarh",
+          "Total_Wave2_Cases": 39831.0,
+          "Total_Wave2_Deaths": 455,
+          "latitude": 30.7333,
+          "longitude": 76.7794,
+          "radius": 1304.0754178141074
+        },
+        {
+          "CFR": 1.4078783682283353,
+          "Peak_Daily_Cases": 17397.0,
+          "Peak_Date": {},
+          "State": "Chhattisgarh",
+          "Total_Wave2_Cases": 681664.0,
+          "Total_Wave2_Deaths": 9597,
+          "latitude": 21.2787,
+          "longitude": 81.8661,
+          "radius": 25348.60340079556
+        },
+        {
+          "CFR": 1.769922639809544,
+          "Peak_Daily_Cases": 28395.0,
+          "Peak_Date": {},
+          "State": "Delhi",
+          "Total_Wave2_Cases": 794724.0,
+          "Total_Wave2_Deaths": 14066,
+          "latitude": 28.7041,
+          "longitude": 77.1025,
+          "radius": 41373.431831096736
+        },
+        {
+          "CFR": 2.0221559513894487,
+          "Peak_Daily_Cases": 4195.0,
+          "Peak_Date": {},
+          "State": "Goa",
+          "Total_Wave2_Cases": 111663.0,
+          "Total_Wave2_Deaths": 2258,
+          "latitude": 15.2993,
+          "longitude": 74.124,
+          "radius": 6112.398187408023
+        },
+        {
+          "CFR": 1.0211367535117957,
+          "Peak_Daily_Cases": 14605.0,
+          "Peak_Date": {},
+          "State": "Gujarat",
+          "Total_Wave2_Cases": 553207.0,
+          "Total_Wave2_Deaths": 5649,
+          "latitude": 22.2587,
+          "longitude": 71.1924,
+          "radius": 21280.47092421792
+        },
+        {
+          "CFR": 1.2821259863087189,
+          "Peak_Daily_Cases": 15786.0,
+          "Peak_Date": {},
+          "State": "Haryana",
+          "Total_Wave2_Cases": 497689.0,
+          "Total_Wave2_Deaths": 6381,
+          "latitude": 29.0588,
+          "longitude": 76.0856,
+          "radius": 23001.26764873017
+        },
+        {
+          "CFR": 1.732172505685544,
+          "Peak_Daily_Cases": 5424.0,
+          "Peak_Date": {},
+          "State": "Himachal Pradesh",
+          "Total_Wave2_Cases": 143346.0,
+          "Total_Wave2_Deaths": 2483,
+          "latitude": 31.1048,
+          "longitude": 77.1734,
+          "radius": 7903.134152205271
+        },
+        {
+          "CFR": 1.2502775457554003,
+          "Peak_Daily_Cases": 5443.0,
+          "Peak_Date": {},
+          "State": "Jammu and Kashmir",
+          "Total_Wave2_Cases": 189158.0,
+          "Total_Wave2_Deaths": 2365,
+          "latitude": 33.7782,
+          "longitude": 76.5762,
+          "radius": 7930.818434818085
+        },
+        {
+          "CFR": 1.7830549941495584,
+          "Peak_Daily_Cases": 8075.0,
+          "Peak_Date": {},
+          "State": "Jharkhand",
+          "Total_Wave2_Cases": 225624.0,
+          "Total_Wave2_Deaths": 4023,
+          "latitude": 23.6102,
+          "longitude": 85.2799,
+          "radius": 11765.820110445717
+        },
+        {
+          "CFR": 1.1998668223928632,
+          "Peak_Daily_Cases": 50112.0,
+          "Peak_Date": {},
+          "State": "Karnataka",
+          "Total_Wave2_Cases": 1892210.0,
+          "Total_Wave2_Deaths": 22704,
+          "latitude": 15.3173,
+          "longitude": 75.7139,
+          "radius": 73016.56685754251
+        },
+        {
+          "CFR": 0.4844794784692488,
+          "Peak_Daily_Cases": 43529.0,
+          "Peak_Date": {},
+          "State": "Kerala",
+          "Total_Wave2_Cases": 1862824.0,
+          "Total_Wave2_Deaths": 9025,
+          "latitude": 10.8505,
+          "longitude": 76.2711,
+          "radius": 63424.69146595562
+        },
+        {
+          "CFR": 0.7021650087770626,
+          "Peak_Daily_Cases": 362.0,
+          "Peak_Date": {},
+          "State": "Ladakh",
+          "Total_Wave2_Cases": 10254.0,
+          "Total_Wave2_Deaths": 72,
+          "latitude": 34.1526,
+          "longitude": 77.577,
+          "radius": 527.4584371493931
+        },
+        {
+          "CFR": 0.5014403072655499,
+          "Peak_Daily_Cases": 345.0,
+          "Peak_Date": {},
+          "State": "Lakshadweep",
+          "Total_Wave2_Cases": 9373.0,
+          "Total_Wave2_Deaths": 47,
+          "latitude": 10.5667,
+          "longitude": 72.6417,
+          "radius": 502.68828954845475
+        },
+        {
+          "CFR": 0.9672125555711367,
+          "Peak_Daily_Cases": 13601.0,
+          "Peak_Date": {},
+          "State": "Madhya Pradesh",
+          "Total_Wave2_Cases": 527702.0,
+          "Total_Wave2_Deaths": 5104,
+          "latitude": 22.9734,
+          "longitude": 78.6569,
+          "radius": 19817.57514825662
+        },
+        {
+          "CFR": 1.7887724852991216,
+          "Peak_Daily_Cases": 68631.0,
+          "Peak_Date": {},
+          "State": "Maharashtra",
+          "Total_Wave2_Cases": 3899937.0,
+          "Total_Wave2_Deaths": 69761,
+          "latitude": 19.7515,
+          "longitude": 75.7139,
+          "radius": 100000.0
+        },
+        {
+          "CFR": 1.9177608845888046,
+          "Peak_Daily_Cases": 1032.0,
+          "Peak_Date": {},
+          "State": "Manipur",
+          "Total_Wave2_Cases": 40516.0,
+          "Total_Wave2_Deaths": 777,
+          "latitude": 24.6637,
+          "longitude": 93.9063,
+          "radius": 1503.6936661275518
+        },
+        {
+          "CFR": 1.9409282700421944,
+          "Peak_Daily_Cases": 1183.0,
+          "Peak_Date": {},
+          "State": "Meghalaya",
+          "Total_Wave2_Cases": 35550.0,
+          "Total_Wave2_Deaths": 690,
+          "latitude": 25.467,
+          "longitude": 91.3662,
+          "radius": 1723.7108595241218
+        },
+        {
+          "CFR": 0.5166189468442675,
+          "Peak_Daily_Cases": 855.0,
+          "Peak_Date": {},
+          "State": "Mizoram",
+          "Total_Wave2_Cases": 16066.0,
+          "Total_Wave2_Deaths": 83,
+          "latitude": 23.1645,
+          "longitude": 92.9376,
+          "radius": 1245.7927175766054
+        },
+        {
+          "CFR": 3.098397116343278,
+          "Peak_Daily_Cases": 570.0,
+          "Peak_Date": {},
+          "State": "Nagaland",
+          "Total_Wave2_Cases": 13039.0,
+          "Total_Wave2_Deaths": 404,
+          "latitude": 26.1584,
+          "longitude": 94.5624,
+          "radius": 830.5284783844036
+        },
+        {
+          "CFR": 0.3671468220490705,
+          "Peak_Daily_Cases": 12852.0,
+          "Peak_Date": {},
+          "State": "Odisha",
+          "Total_Wave2_Cases": 572523.0,
+          "Total_Wave2_Deaths": 2102,
+          "latitude": 20.9517,
+          "longitude": 85.0985,
+          "radius": 18726.231586309394
+        },
+        {
+          "CFR": 1.393278720247694,
+          "Peak_Daily_Cases": 2049.0,
+          "Peak_Date": {},
+          "State": "Puducherry",
+          "Total_Wave2_Cases": 77515.0,
+          "Total_Wave2_Deaths": 1080,
+          "latitude": 11.9416,
+          "longitude": 79.8083,
+          "radius": 2985.53131966604
+        },
+        {
+          "CFR": 2.4714147286821704,
+          "Peak_Daily_Cases": 9042.0,
+          "Peak_Date": {},
+          "State": "Punjab",
+          "Total_Wave2_Cases": 412800.0,
+          "Total_Wave2_Deaths": 10202,
+          "latitude": 31.1471,
+          "longitude": 75.3412,
+          "radius": 13174.804388687327
+        },
+        {
+          "CFR": 0.970620301376496,
+          "Peak_Daily_Cases": 18298.0,
+          "Peak_Date": {},
+          "State": "Rajasthan",
+          "Total_Wave2_Cases": 631967.0,
+          "Total_Wave2_Deaths": 6134,
+          "latitude": 27.0238,
+          "longitude": 74.2179,
+          "radius": 26661.42122364529
+        },
+        {
+          "CFR": 1.1945273977359538,
+          "Peak_Daily_Cases": 420.0,
+          "Peak_Date": {},
+          "State": "Sikkim",
+          "Total_Wave2_Cases": 14399.0,
+          "Total_Wave2_Deaths": 172,
+          "latitude": 27.533,
+          "longitude": 88.5122,
+          "radius": 611.968352493771
+        },
+        {
+          "CFR": 1.2359923326452373,
+          "Peak_Daily_Cases": 36184.0,
+          "Peak_Date": {},
+          "State": "Tamil Nadu",
+          "Total_Wave2_Cases": 1627680.0,
+          "Total_Wave2_Deaths": 20118,
+          "latitude": 11.1271,
+          "longitude": 78.6569,
+          "radius": 52722.53063484431
+        },
+        {
+          "CFR": 0.6244914063077948,
+          "Peak_Daily_Cases": 10122.0,
+          "Peak_Date": {},
+          "State": "Telangana",
+          "Total_Wave2_Cases": 324424.0,
+          "Total_Wave2_Deaths": 2026,
+          "latitude": 18.1124,
+          "longitude": 79.0193,
+          "radius": 14748.43729509988
+        },
+        {
+          "CFR": 0.8871951219512194,
+          "Peak_Daily_Cases": 879.0,
+          "Peak_Date": {},
+          "State": "Tripura",
+          "Total_Wave2_Cases": 32800.0,
+          "Total_Wave2_Deaths": 291,
+          "latitude": 23.9408,
+          "longitude": 91.9882,
+          "radius": 1280.7623377191067
+        },
+        {
+          "CFR": 1.257506809529986,
+          "Peak_Daily_Cases": 37944.0,
+          "Peak_Date": {},
+          "State": "Uttar Pradesh",
+          "Total_Wave2_Cases": 1102499.0,
+          "Total_Wave2_Deaths": 13864,
+          "latitude": 26.8467,
+          "longitude": 80.9462,
+          "radius": 55286.969445294395
+        },
+        {
+          "CFR": 2.312271815281387,
+          "Peak_Daily_Cases": 9642.0,
+          "Peak_Date": {},
+          "State": "Uttarakhand",
+          "Total_Wave2_Cases": 243224.0,
+          "Total_Wave2_Deaths": 5624,
+          "latitude": 30.0668,
+          "longitude": 79.0193,
+          "radius": 14049.044892249856
+        },
+        {
+          "CFR": 0.8047880562529544,
+          "Peak_Daily_Cases": 20846.0,
+          "Peak_Date": {},
+          "State": "West Bengal",
+          "Total_Wave2_Cases": 924467.0,
+          "Total_Wave2_Deaths": 7440,
+          "latitude": 22.9868,
+          "longitude": 87.855,
+          "radius": 30374.02922877417
+        }
+      ],
+      "filled": true,
+      "getFillColor": [
+        255,
+        0,
+        0,
+        140
+      ],
+      "getPosition": "@@=[longitude, latitude]",
+      "getRadius": "@@=radius",
+      "id": "31a9af57-4e24-4a42-a5b5-7340c586a299",
+      "opacity": 0.8,
+      "pickable": true,
+      "stroked": true
+    }
+  ],
+  "mapProvider": "carto",
+  "mapStyle": "mapbox://styles/mapbox/light-v9",
+  "views": [
+    {
+      "@@type": "MapView",
+      "controller": true
+    }
+  ]
+};
+    const tooltip = {'html': '<b>{State}</b><br>Peak Daily Cases: {Peak_Daily_Cases}<br>On: {Peak_Date}<br>Total Wave2 Cases: {Total_Wave2_Cases}<br>CFR: {CFR}%', 'style': {'backgroundColor': 'steelblue', 'color': 'white'}};
+    const customLibraries = null;
+    const configuration = null;
+
+    const deckInstance = createDeck({
+                  container,
+      jsonInput,
+      tooltip,
+      customLibraries,
+      configuration
+    });
+
+  </script>
+</html>

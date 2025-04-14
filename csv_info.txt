@@ -1,0 +1,148 @@
+AgeGroupDetails.csv
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 10 entries, 0 to 9
+Data columns (total 4 columns):
+ #   Column      Non-Null Count  Dtype 
+---  ------      --------------  ----- 
+ 0   Sno         10 non-null     int64 
+ 1   AgeGroup    10 non-null     object
+ 2   TotalCases  10 non-null     int64 
+ 3   Percentage  10 non-null     object
+
+
+covid cases by state_Full Data_data (1).csv
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 18110 entries, 0 to 18109
+Data columns (total 11 columns):
+ #   Column                      Non-Null Count  Dtype 
+---  ------                      --------------  ----- 
+ 0   Year of Date                18110 non-null  int64 
+ 1   Month of Date               18110 non-null  object
+ 2   State/UnionTerritory        18110 non-null  object
+ 3   Confirmed                   18110 non-null  int64 
+ 4   Cured                       18110 non-null  int64 
+ 5   Deaths                      18110 non-null  int64 
+ 6   Confirmed Foreign National  5335 non-null   object
+ 7   Confirmed Indian National   5335 non-null   object
+ 8   Date                        18110 non-null  object
+ 9   Sno                         18110 non-null  int64 
+ 10  Time                        18110 non-null  object
+
+covid_19_india.csv
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 18110 entries, 0 to 18109
+Data columns (total 9 columns):
+ #   Column                    Non-Null Count  Dtype 
+---  ------                    --------------  ----- 
+ 0   Sno                       18110 non-null  int64 
+ 1   Date                      18110 non-null  object
+ 2   Time                      18110 non-null  object
+ 3   State/UnionTerritory      18110 non-null  object
+ 4   ConfirmedIndianNational   18110 non-null  object
+ 5   ConfirmedForeignNational  18110 non-null  object
+ 6   Cured                     18110 non-null  int64 
+ 7   Deaths                    18110 non-null  int64 
+ 8   Confirmed                 18110 non-null  int64 
+
+
+
+COVID-19 India Statewise Vaccine Data.csv
+
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 36 entries, 0 to 35
+Data columns (total 10 columns):
+ #   Column                   Non-Null Count  Dtype 
+---  ------                   --------------  ----- 
+ 0   State/UTs                36 non-null     object
+ 1   Total Vaccination Doses  36 non-null     int64 
+ 2   Dose1                    36 non-null     int64 
+ 3   Dose 2                   36 non-null     int64 
+ 4   Dose 1 15-18             36 non-null     int64 
+ 5   Dose 2 15-18             36 non-null     int64 
+ 6   Dose 1 12-14             36 non-null     int64 
+ 7   Dose 2 12-14             36 non-null     int64 
+ 8   Precaution 18-59         36 non-null     int64 
+ 9   Population               36 non-null     int64
+
+Covid2_new.csv
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 4514 entries, 0 to 4513
+Data columns (total 6 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   Date       4514 non-null   object 
+ 1   State      4514 non-null   object 
+ 2   Confirmed  4514 non-null   int64  
+ 3   Deaths     4514 non-null   int64  
+ 4   Recovered  4514 non-null   float64
+ 5   New Cases  4514 non-null   float64
+
+Gender without missing values_Full Data_data.csv
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 5313 entries, 0 to 5312
+Data columns (total 14 columns):
+ #   Column              Non-Null Count  Dtype  
+---  ------              --------------  -----  
+ 0   Gender              5313 non-null   object 
+ 1   0                   5313 non-null   int64  
+ 2   0.1                 5313 non-null   int64  
+ 3   Age                 2263 non-null   float64
+ 4   Current Status      5313 non-null   object 
+ 5   Detected City       1196 non-null   object 
+ 6   Detected District   5306 non-null   object 
+ 7   Detected State      5313 non-null   object 
+ 8   Diagnosed Date      5313 non-null   object 
+ 9   Government Id       2079 non-null   object 
+ 10  Id                  5313 non-null   int64  
+ 11  Nationality         1914 non-null   object 
+ 12  Notes               5224 non-null   object 
+ 13  Status Change Date  5310 non-null   object 
+
+
+merged_covid_vaccine_data.csv
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 3276 entries, 0 to 3275
+Data columns (total 18 columns):
+ #   Column                            Non-Null Count  Dtype  
+---  ------                            --------------  -----  
+ 0   Date                              3276 non-null   object 
+ 1   State                             3276 non-null   object 
+ 2   Confirmed                         3276 non-null   int64  
+ 3   Deaths                            3276 non-null   int64  
+ 4   Recovered                         3276 non-null   float64
+ 5   New Cases                         3276 non-null   float64
+ 6   Updated On                        3276 non-null   object 
+ 7   Total Doses Administered          3275 non-null   float64
+ 8   Sessions                          3275 non-null   float64
+ 9    Sites                            3275 non-null   float64
+ 10  First Dose Administered           3275 non-null   float64
+ 11  Second Dose Administered          3275 non-null   float64
+ 12  Male (Doses Administered)         3275 non-null   float64
+ 13  Female (Doses Administered)       3275 non-null   float64
+ 14  Transgender (Doses Administered)  3275 non-null   float64
+ 15   Covaxin (Doses Administered)     3275 non-null   float64
+ 16  CoviShield (Doses Administered)   3275 non-null   float64
+ 17  Total Individuals Vaccinated      3059 non-null   float64
+
+
+Statewise Testing Details_Full Data_data.csv
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 69 entries, 0 to 68
+Data columns (total 5 columns):
+ #   Column         Non-Null Count  Dtype  
+---  ------         --------------  -----  
+ 0   State          69 non-null     object 
+ 1   Negative       68 non-null     float64
+ 2   Positive       69 non-null     int64  
+ 3   Total Samples  69 non-null     int64  
+ 4   Date           69 non-null     object 
+
+
+

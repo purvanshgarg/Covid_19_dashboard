@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~9.0.*/dist/index.js'></script>
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#deck-container canvas {
+  z-index: 1;
+  background: none;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  </body>
+  <script>
+    const container = document.getElementById('deck-container');
+    const jsonInput = {
+  "initialViewState": {
+    "bearing": 0,
+    "latitude": 22.5937,
+    "longitude": 78.9629,
+    "maxZoom": 10,
+    "minZoom": 3,
+    "pitch": 0,
+    "zoom": 4
+  },
+  "layers": [
+    {
+      "@@type": "ScatterplotLayer",
+      "data": [
+        {
+          "Confirmed": 7005,
+          "Date": {},
+          "Deaths": 115,
+          "New Cases": 21.0,
+          "Recovered": 6719.0,
+          "State": "Andaman and Nicobar Islands",
+          "latitude": 11.7401,
+          "longitude": 92.6586,
+          "radius": 121.8919722173307
+        },
+        {
+          "Confirmed": 1693085,
+          "Date": {},
+          "Deaths": 10930,
+          "New Cases": 7943.0,
+          "Recovered": 1528360.0,
+          "State": "Andhra Pradesh",
+          "latitude": 15.9129,
+          "longitude": 79.74,
+          "radius": 29460.8807682483
+        },
+        {
+          "Confirmed": 27272,
+          "Date": {},
+          "Deaths": 115,
+          "New Cases": 322.0,
+          "Recovered": 23402.0,
+          "State": "Arunachal Pradesh",
+          "latitude": 28.218,
+          "longitude": 94.7278,
+          "radius": 474.5521579316263
+        },
+        {
+          "Confirmed": 411216,
+          "Date": {},
+          "Deaths": 3365,
+          "New Cases": 4348.0,
+          "Recovered": 354810.0,
+          "State": "Assam",
+          "latitude": 26.2006,
+          "longitude": 92.9376,
+          "radius": 7155.450285128031
+        },
+        {
+          "Confirmed": 706761,
+          "Date": {},
+          "Deaths": 5163,
+          "New Cases": 1113.0,
+          "Recovered": 685362.0,
+          "State": "Bihar",
+          "latitude": 25.0961,
+          "longitude": 85.3131,
+          "radius": 12298.143065851942
+        },
+        {
+          "Confirmed": 60046,
+          "Date": {},
+          "Deaths": 753,
+          "New Cases": 124.0,
+          "Recovered": 57526.0,
+          "State": "Chandigarh",
+          "latitude": 30.7333,
+          "longitude": 76.7794,
+          "radius": 1044.8430212365222
+        },
+        {
+          "Confirmed": 971463,
+          "Date": {},
+          "Deaths": 13048,
+          "New Cases": 2163.0,
+          "Recovered": 922674.0,
+          "State": "Chhattisgarh",
+          "latitude": 21.2787,
+          "longitude": 81.8661,
+          "radius": 16904.145753913595
+        },
+        {
+          "Confirmed": 1426240,
+          "Date": {},
+          "Deaths": 24237,
+          "New Cases": 648.0,
+          "Recovered": 1390963.0,
+          "State": "Delhi",
+          "latitude": 28.7041,
+          "longitude": 77.1025,
+          "radius": 24817.588359064343
+        },
+        {
+          "Confirmed": 155666,
+          "Date": {},
+          "Deaths": 2649,
+          "New Cases": 602.0,
+          "Recovered": 140254.0,
+          "State": "Goa",
+          "latitude": 15.2993,
+          "longitude": 74.124,
+          "radius": 2708.698893245253
+        },
+        {
+          "Confirmed": 809169,
+          "Date": {},
+          "Deaths": 9833,
+          "New Cases": 1681.0,
+          "Recovered": 766991.0,
+          "State": "Gujarat",
+          "latitude": 22.2587,
+          "longitude": 71.1924,
+          "radius": 14080.114956049287
+        },
+        {
+          "Confirmed": 756635,
+          "Date": {},
+          "Deaths": 8303,
+          "New Cases": 1246.0,
+          "Recovered": 729752.0,
+          "State": "Haryana",
+          "latitude": 29.0588,
+          "longitude": 76.0856,
+          "radius": 13165.98606690364
+        },
+        {
+          "Confirmed": 190330,
+          "Date": {},
+          "Deaths": 3143,
+          "New Cases": 865.0,
+          "Recovered": 173566.0,
+          "State": "Himachal Pradesh",
+          "latitude": 31.1048,
+          "longitude": 77.1734,
+          "radius": 3311.8770980905856
+        },
+        {
+          "Confirmed": 290465,
+          "Date": {},
+          "Deaths": 3907,
+          "New Cases": 1525.0,
+          "Recovered": 251463.0,
+          "State": "Jammu and Kashmir",
+          "latitude": 33.7782,
+          "longitude": 76.5762,
+          "radius": 5054.297174890358
+        },
+        {
+          "Confirmed": 337774,
+          "Date": {},
+          "Deaths": 4991,
+          "New Cases": 831.0,
+          "Recovered": 323876.0,
+          "State": "Jharkhand",
+          "latitude": 23.6102,
+          "longitude": 85.2799,
+          "radius": 5877.507355280037
+        },
+        {
+          "Confirmed": 2604431,
+          "Date": {},
+          "Deaths": 29090,
+          "New Cases": 16604.0,
+          "Recovered": 2261590.0,
+          "State": "Karnataka",
+          "latitude": 15.3173,
+          "longitude": 75.7139,
+          "radius": 45318.94805052888
+        },
+        {
+          "Confirmed": 2526579,
+          "Date": {},
+          "Deaths": 8815,
+          "New Cases": 12300.0,
+          "Recovered": 2310385.0,
+          "State": "Kerala",
+          "latitude": 10.8505,
+          "longitude": 76.2711,
+          "radius": 43964.26799041987
+        },
+        {
+          "Confirmed": 18662,
+          "Date": {},
+          "Deaths": 189,
+          "New Cases": 165.0,
+          "Recovered": 16859.0,
+          "State": "Ladakh",
+          "latitude": 34.1526,
+          "longitude": 77.577,
+          "radius": 324.7320464696396
+        },
+        {
+          "Confirmed": 8077,
+          "Date": {},
+          "Deaths": 33,
+          "New Cases": 149.0,
+          "Recovered": 6242.0,
+          "State": "Lakshadweep",
+          "latitude": 10.5667,
+          "longitude": 72.6417,
+          "radius": 140.54553313338758
+        },
+        {
+          "Confirmed": 780030,
+          "Date": {},
+          "Deaths": 8067,
+          "New Cases": 1205.0,
+          "Recovered": 748573.0,
+          "State": "Madhya Pradesh",
+          "latitude": 22.9734,
+          "longitude": 78.6569,
+          "radius": 13573.075672902849
+        },
+        {
+          "Confirmed": 5746892,
+          "Date": {},
+          "Deaths": 95344,
+          "New Cases": 15077.0,
+          "Recovered": 5395370.0,
+          "State": "Maharashtra",
+          "latitude": 19.7515,
+          "longitude": 75.7139,
+          "radius": 100000.0
+        },
+        {
+          "Confirmed": 50751,
+          "Date": {},
+          "Deaths": 807,
+          "New Cases": 869.0,
+          "Recovered": 41153.0,
+          "State": "Manipur",
+          "latitude": 24.6637,
+          "longitude": 93.9063,
+          "radius": 883.1034235548537
+        },
+        {
+          "Confirmed": 35598,
+          "Date": {},
+          "Deaths": 578,
+          "New Cases": 408.0,
+          "Recovered": 28107.0,
+          "State": "Meghalaya",
+          "latitude": 25.467,
+          "longitude": 91.3662,
+          "radius": 619.4304678076428
+        },
+        {
+          "Confirmed": 12399,
+          "Date": {},
+          "Deaths": 40,
+          "New Cases": 312.0,
+          "Recovered": 9214.0,
+          "State": "Mizoram",
+          "latitude": 23.1645,
+          "longitude": 92.9376,
+          "radius": 215.7514009311468
+        },
+        {
+          "Confirmed": 21680,
+          "Date": {},
+          "Deaths": 376,
+          "New Cases": 117.0,
+          "Recovered": 16370.0,
+          "State": "Nagaland",
+          "latitude": 26.1584,
+          "longitude": 94.5624,
+          "radius": 377.2473886754789
+        },
+        {
+          "Confirmed": 764997,
+          "Date": {},
+          "Deaths": 2754,
+          "New Cases": 8313.0,
+          "Recovered": 680932.0,
+          "State": "Odisha",
+          "latitude": 20.9517,
+          "longitude": 85.0985,
+          "radius": 13311.49080233281
+        },
+        {
+          "Confirmed": 104453,
+          "Date": {},
+          "Deaths": 1536,
+          "New Cases": 627.0,
+          "Recovered": 91770.0,
+          "State": "Puducherry",
+          "latitude": 11.9416,
+          "longitude": 79.8083,
+          "radius": 1817.5563417582928
+        },
+        {
+          "Confirmed": 567607,
+          "Date": {},
+          "Deaths": 14550,
+          "New Cases": 2192.0,
+          "Recovered": 516624.0,
+          "State": "Punjab",
+          "latitude": 31.1471,
+          "longitude": 75.3412,
+          "radius": 9876.764692985356
+        },
+        {
+          "Confirmed": 939958,
+          "Date": {},
+          "Deaths": 8385,
+          "New Cases": 1498.0,
+          "Recovered": 888919.0,
+          "State": "Rajasthan",
+          "latitude": 27.0238,
+          "longitude": 74.2179,
+          "radius": 16355.936391357276
+        },
+        {
+          "Confirmed": 15317,
+          "Date": {},
+          "Deaths": 253,
+          "New Cases": 146.0,
+          "Recovered": 11043.0,
+          "State": "Sikkim",
+          "latitude": 27.533,
+          "longitude": 88.5122,
+          "radius": 266.5266721560106
+        },
+        {
+          "Confirmed": 2096516,
+          "Date": {},
+          "Deaths": 24232,
+          "New Cases": 27936.0,
+          "Recovered": 1770503.0,
+          "State": "Tamil Nadu",
+          "latitude": 11.1271,
+          "longitude": 78.6569,
+          "radius": 36480.86652750739
+        },
+        {
+          "Confirmed": 578351,
+          "Date": {},
+          "Deaths": 3281,
+          "New Cases": 2524.0,
+          "Recovered": 540986.0,
+          "State": "Telangana",
+          "latitude": 18.1124,
+          "longitude": 79.0193,
+          "radius": 10063.71791918136
+        },
+        {
+          "Confirmed": 51974,
+          "Date": {},
+          "Deaths": 519,
+          "New Cases": 841.0,
+          "Recovered": 44908.0,
+          "State": "Tripura",
+          "latitude": 23.9408,
+          "longitude": 91.9882,
+          "radius": 904.3844916521834
+        },
+        {
+          "Confirmed": 1691488,
+          "Date": {},
+          "Deaths": 20497,
+          "New Cases": 1472.0,
+          "Recovered": 1633947.0,
+          "State": "Uttar Pradesh",
+          "latitude": 26.8467,
+          "longitude": 80.9462,
+          "radius": 29433.091834682116
+        },
+        {
+          "Confirmed": 329494,
+          "Date": {},
+          "Deaths": 6452,
+          "New Cases": 1156.0,
+          "Recovered": 294671.0,
+          "State": "Uttarakhand",
+          "latitude": 30.0668,
+          "longitude": 79.0193,
+          "radius": 5733.429478055268
+        },
+        {
+          "Confirmed": 1376377,
+          "Date": {},
+          "Deaths": 15541,
+          "New Cases": 10137.0,
+          "Recovered": 1273788.0,
+          "State": "West Bengal",
+          "latitude": 22.9868,
+          "longitude": 87.855,
+          "radius": 23949.936765820552
+        }
+      ],
+      "filled": true,
+      "getFillColor": [
+        255,
+        0,
+        0,
+        140
+      ],
+      "getPosition": "@@=[longitude, latitude]",
+      "getRadius": "@@=radius",
+      "id": "1817d012-aacc-4bab-ab58-f62e17a440f9",
+      "opacity": 0.8,
+      "pickable": true,
+      "stroked": true
+    }
+  ],
+  "mapProvider": "carto",
+  "mapStyle": "mapbox://styles/mapbox/light-v9",
+  "views": [
+    {
+      "@@type": "MapView",
+      "controller": true
+    }
+  ]
+};
+    const tooltip = {'html': '<b>{State}</b><br>Date: {Date}<br>Confirmed: {Confirmed}<br>Deaths: {Deaths}', 'style': {'backgroundColor': 'steelblue', 'color': 'white'}};
+    const customLibraries = null;
+    const configuration = null;
+
+    const deckInstance = createDeck({
+                  container,
+      jsonInput,
+      tooltip,
+      customLibraries,
+      configuration
+    });
+
+  </script>
+</html>
