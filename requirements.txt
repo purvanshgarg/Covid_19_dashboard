@@ -10,3 +10,4 @@ pydeck
 pyngrok
 seaborn
 shapely
+gunicorn
