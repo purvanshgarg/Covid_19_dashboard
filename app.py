@@ -10,12 +10,12 @@ import geopandas as gpd
 from shapely.geometry import Point
 
 # Load datasets
-covid_state_data = pd.read_csv(r"Data//covid cases by state_Full Data_data (1).csv")
-covid_india = pd.read_csv(r"Data//covid_19_india.csv")
-vaccine_data = pd.read_csv(r"Data//COVID-19 India Statewise Vaccine Data.csv")
-covid2_new = pd.read_csv(r"Data//Covid2_new.csv")
-testing_data = pd.read_csv(r"Data//Statewise Testing Details_Full Data_data.csv")
-merged_data = pd.read_csv(r"Data//merged_covid_vaccine_data.csv")
+covid_state_data = pd.read_csv(r'Data/covid cases by state_Full Data_data (1).csv')
+covid_india = pd.read_csv(r'Data/covid_19_india.csv')
+vaccine_data = pd.read_csv(r'Data/COVID-19 India Statewise Vaccine Data.csv')
+covid2_new = pd.read_csv(r'Data/Covid2_new.csv')
+testing_data = pd.read_csv(r'Data/Statewise Testing Details_Full Data_data.csv')
+merged_data = pd.read_csv(r'Data/merged_covid_vaccine_data.csv')
 
 # Fix date columns
 covid_state_data['Date'] = pd.to_datetime(covid_state_data['Date'])
@@ -517,7 +517,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load the merged dataset that contains both COVID cases and vaccination data
-merged_data = pd.read_csv(r"Data//merged_covid_vaccine_data.csv")
+merged_data = pd.read_csv(r'Data/merged_covid_vaccine_data.csv')
 
 # Convert date column to datetime
 merged_data['Date'] = pd.to_datetime(merged_data['Date'])
@@ -693,13 +693,13 @@ import base64
 
 # Load datasets
 def load_datasets():
-    covid_state_data = pd.read_csv(r"Data//covid cases by state_Full Data_data (1).csv")
-    covid_india = pd.read_csv(r"Data//covid_19_india.csv")
-    vaccine_data = pd.read_csv(r"Data//covid_vaccine_statewise.csv")
-    covid2_new = pd.read_csv(r"Data//Covid2_new.csv")
-    testing_data = pd.read_csv(r"Data//StatewiseTestingDetails.csv")
-    merged_data = pd.read_csv(r"Data//merged_covid_vaccine_data.csv")
-    age_group_data = pd.read_csv(r"Data//AgeGroupDetails.csv")
+    covid_state_data = pd.read_csv(r'Data/covid cases by state_Full Data_data (1).csv')
+    covid_india = pd.read_csv(r'Data/covid_19_india.csv')
+    vaccine_data = pd.read_csv(r'Data/covid_vaccine_statewise.csv')
+    covid2_new = pd.read_csv(r'Data/Covid2_new.csv')
+    testing_data = pd.read_csv(r'Data/StatewiseTestingDetails.csv')
+    merged_data = pd.read_csv(r'Data/merged_covid_vaccine_data.csv')
+    age_group_data = pd.read_csv(r'Data/AgeGroupDetails.csv')
     
     # Fix date columns
     covid_state_data['Date'] = pd.to_datetime(covid_state_data['Date'])
