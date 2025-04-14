@@ -1,0 +1,12 @@
+dash
+dash-bootstrap-components
+dash_tools
+geopandas
+matplotlib
+numpy
+pandas
+plotly
+pydeck
+pyngrok
+seaborn
+shapely
