@@ -10,7 +10,7 @@ import geopandas as gpd
 from shapely.geometry import Point
 
 # Load datasets
-covid_state_data = pd.read_csv(r'Data/covid cases by state_Full Data_data (1).csv')
+covid_state_data = pd.read_csv(r'covid cases by state_Full Data_data.csv')
 covid_india = pd.read_csv(r'Data/covid_19_india.csv')
 vaccine_data = pd.read_csv(r'Data/COVID-19 India Statewise Vaccine Data.csv')
 covid2_new = pd.read_csv(r'Data/Covid2_new.csv')
